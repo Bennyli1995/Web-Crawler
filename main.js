@@ -1,6 +1,7 @@
 const { getURLsFromHTML, normalizeURL, crawlPage } = require("./crawl");
+const {sortPages, printReport} = require("./report")
 
-const main = () => {
+const main = async () => {
   if (process.argv.length < 3) {
     console.log("no website provided");
     process.exit(1);
@@ -19,9 +20,9 @@ const main = () => {
     console.log(`Website is invalid. ${err}`);
   }
 
-
   console.log(`starting crawl of ${baseURL}`);
-  crawlPage(baseURL);
+  const pages = await crawlPage(baseURL, baseURL, {});
+  printReport(pages);
 }
 
 main()

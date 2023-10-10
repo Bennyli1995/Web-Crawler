@@ -1,7 +1,7 @@
 const sortPages = (pages) => {
   const pagesArr = Object.entries(pages);
   pagesArr.sort((a, b) => {
-    return a[1] < b[1];
+    return b[1] - a[1];
   })
 
   return pagesArr;
